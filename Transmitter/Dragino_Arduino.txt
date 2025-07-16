@@ -1,0 +1,68 @@
+#include <SPI.h>
+#include <LoRa.h>
+
+// Define the pins used by the LoRa module
+#define LORA_CS_PIN    10  // NSS pin
+#define LORA_RESET_PIN 9   // RESET pin
+#define LORA_DIO0_PIN  2   // DIO0 pin (Interrupt pin)
+
+// --- LoRa Parameters (MUST MATCH THE nRF54L15 TRANSMITTER) ---
+#define LORA_FREQUENCY    868E6      // 865 MHz
+#define LORA_BANDWIDTH    125E3      // 125 kHz
+#define LORA_SF           7          // Spreading Factor 7
+#define LORA_CODING_RATE  5          // Coding Rate 4/5
+#define LORA_PREAMBLE_LEN 8          // Preamble length 8
+
+void onReceive(int packetSize); // Forward declaration
+
+void setup() {
+  // Initialize Serial Monitor for debugging
+  Serial.begin(115200);
+  while (!Serial);
+  Serial.println("Arduino LoRa Receiver - SX1276");
+
+  // Setup LoRa module pins
+  LoRa.setPins(LORA_CS_PIN, LORA_RESET_PIN, LORA_DIO0_PIN);
+
+  // Initialize LoRa module at the correct frequency
+  if (!LoRa.begin(LORA_FREQUENCY)) {
+    Serial.println("Starting LoRa failed!");
+    while (1);
+  }
+
+  // Set the LoRa parameters to match the transmitter
+  LoRa.setSpreadingFactor(LORA_SF);
+  LoRa.setSignalBandwidth(LORA_BANDWIDTH);
+  LoRa.setCodingRate4(LORA_CODING_RATE);
+  LoRa.setPreambleLength(LORA_PREAMBLE_LEN);
+  
+  // Register the interrupt callback function
+  LoRa.onReceive(onReceive);
+  
+  // Put the radio into continuous receive mode
+  LoRa.receive();
+  
+  Serial.println("Receiver is ready and waiting for messages...");
+}
+
+void loop() {
+  // The loop can be empty because we are using interrupts
+  // Or you can put other non-blocking code here
+}
+
+// This function is called when a packet is received
+void onReceive(int packetSize) {
+  if (packetSize == 0) return; // If no packet, exit
+
+  // Read the packet
+  String receivedMessage = "";
+  while (LoRa.available()) {
+    receivedMessage += (char)LoRa.read();
+  }
+
+  // Print the message and signal strength (RSSI)
+  Serial.print("Received packet: '");
+  Serial.print(receivedMessage);
+  Serial.print("' with RSSI ");
+  Serial.println(LoRa.packetRssi());
+}

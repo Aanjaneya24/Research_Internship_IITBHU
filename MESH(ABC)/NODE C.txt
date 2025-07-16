@@ -1,0 +1,51 @@
+#include <SPI.h>
+#include <LoRa.h>
+
+#define BAND 868E6  // Only allow 868.0 MHz
+#define LORA_SF 7   // Same as Zephyr TX
+#define LORA_BW 125E3
+#define LORA_CR 5   // 4/5 coding rate
+
+void setup() {
+  Serial.begin(9600);
+  while (!Serial);
+
+  Serial.println("LoRa Strict 868.0 MHz Receiver Starting...");
+
+  if (!LoRa.begin(BAND)) {
+    Serial.println("Starting LoRa failed!");
+    while (1);
+  }
+
+  // Set parameters to strictly match the transmitter
+  LoRa.setSpreadingFactor(LORA_SF);
+  LoRa.setSignalBandwidth(LORA_BW);
+  LoRa.setCodingRate4(LORA_CR);
+
+  Serial.println("LoRa Initialized. Waiting for strict 868 MHz packets...");
+}
+
+void loop() {
+  int packetSize = LoRa.parsePacket();
+  if (packetSize) {
+    String incoming = "";
+    while (LoRa.available()) {
+      incoming += (char)LoRa.read();
+    }
+
+    float snr = LoRa.packetSnr();
+    long rssi = LoRa.packetRssi();
+
+    // Optionally, filter further by minimum SNR or RSSI threshold
+    if (rssi > -85 && snr > 0) { // You can adjust this threshold
+      Serial.print("Received (868.0 MHz OK): ");
+      Serial.print(incoming);
+      Serial.print(" | RSSI: ");
+      Serial.print(rssi);
+      Serial.print(" | SNR: ");
+      Serial.println(snr);
+    } else {
+      Serial.println("⚠️ Ignored weak/offset signal");
+    }
+  }
+}
