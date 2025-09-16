@@ -45,10 +45,20 @@ Research_Internship_IITBHU/
 
 ---
 
+
 ## 📷 Preview
 
-> LED toggle and console logs confirm working transmission & reception logic.  
-> *(You can add a screenshot or photo here if desired)*
+This section showcases the successful implementation and testing of LoRa and LoRaWAN communication using the nRF54L15 DK and SX1261 module. The images below highlight:
+
+- Real hardware setup and connections
+- Console logs confirming data transmission and reception
+- Live demonstration of the working system
+
+**Hardware Setup:**
+![nRF54L15 DK with SX1261 LoRa Module](<IMG_3500BA64F448-1 2.JPEG>)
+
+**Console Output – Successful Transmission:**
+![Console log showing LoRa data exchange](<Screenshot 2025-09-17 at 1.35.58 AM.png>)
 
 ---
 
@@ -112,6 +122,11 @@ Includes:
 
 ---
 
+## 📑 Certificate
+
+📄 **[View Internship Certificate on LinkedIn](https://www.linkedin.com/in/aanjaneya-pandey-9715b2335/overlay/1754292001300/single-media-viewer/?type=DOCUMENT&profileId=ACoAAFRFmeUBzzjYbsTC-O3yws6EvKYSc_1Jqzw)**
+
+
 ## 🧠 Key Learnings
 
 - Embedded RTOS development (Zephyr)
@@ -128,8 +143,32 @@ Includes:
 GitHub: [@Aanjaneya24](https://github.com/Aanjaneya24)  
 ---
 
+
 ## 📜 License
 
-This project is intended for academic and research use only.  
-All code and documentation © Aanjaneya Pandey 2025.
+This project is licensed under the MIT License.
+
+```
+MIT License
+
+Copyright (c) 2025 Aanjaneya Pandey
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
