@@ -54,11 +54,12 @@ This section showcases the successful implementation and testing of LoRa and LoR
 - Console logs confirming data transmission and reception
 - Live demonstration of the working system
 
+
 **Hardware Setup:**
-![nRF54L15 DK with SX1261 LoRa Module](IMG_3500BA64F448-1%202.JPEG)
+[View nRF54L15 DK with SX1261 LoRa Module (Image)](IMG_3500BA64F448-1%202.JPEG)
 
 **Output – Successful Transmission:**
-![Blinking of Leds showing LoRa data exchange](Screenshot%202025-09-17%20at%201.35.58%E2%80%AFAM.png)
+[View Blinking of LEDs showing LoRa data exchange (Image)](Screenshot%202025-09-17%20at%201.35.58%E2%80%AFAM.png)
 
 ---
 
