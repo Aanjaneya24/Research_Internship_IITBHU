@@ -57,8 +57,8 @@ This section showcases the successful implementation and testing of LoRa and LoR
 **Hardware Setup:**
 ![nRF54L15 DK with SX1261 LoRa Module](<IMG_3500BA64F448-1 2.JPEG>)
 
-**Console Output – Successful Transmission:**
-![Console log showing LoRa data exchange](<Screenshot 2025-09-17 at 1.35.58 AM.png>)
+**Output – Successful Transmission:**
+![Blinking of Leds showing LoRa data exchange](<Screenshot 2025-09-17 at 1.35.58 AM.png>)
 
 ---
 
